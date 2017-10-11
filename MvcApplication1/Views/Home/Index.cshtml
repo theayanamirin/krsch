@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewBag.Title = "librería";
+}
+
+<br />
+<div class="page-wrap-ep">
+    <div class="panel1">
+        <div class="title">
+            <h1 style="color:#591E23; text-shadow:white 0 0 5px"><b>Последние новости</b></h1>
+        </div>
+        <div class="content">
+           @foreach (var x in ViewBag.NewsForIndex)
+           {
+            <p>
+                <hr />
+                <p align="left"  style="color:#F2D8A7; text-shadow:#591E23 0 0 2px"><i>@x.Added</i></p>
+                <h3 style="text-shadow:white 0 0 5px" >@x.Title</h3>
+                
+            <hr />
+            </p>
+           }
+            <div class="button floatLeft"><a href="/Home/News">Подробнее</a></div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="page-wrap">
+    <div class="wrap">
+
+
+        <div class="box marRight40">
+            <div class="panel">
+                <div class="title">
+                    <h1 style="color:#591E23; text-shadow:white 0 0 8px"><b>Каталог</b></h1>
+                    
+                </div>
+                <div class="content">
+                    <p style="color:#F2D8A7; text-shadow:#591E23 0 0 2px"><b>   На нашем сайте содержится большое число художественной литературы. Вы можете посмотреть наш каталог!</b></p><br /><br />
+                    <div class="button"><a href="/Catalog/Genres">Подробнее</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="box">
+            <div class="panel">
+                <div class="title">
+                    <h1 style="color:#591E23; text-shadow:white 0 0 8px"><b>Книга отзывов</b></h1>
+                </div>
+                <div class="content">
+                    <p style="color:#F2D8A7; text-shadow:#591E23 0 0 2px"><b>   А здесь вы можете посмотреть отзывы на наш магазин или оставить свой! Принимаем жалобы и предложения!</b></p><br /><br />
+                    <div class="button"><a href="/Home/Comment">Подробнее</a></div>
+                    
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+
+<div class="clear"></div>

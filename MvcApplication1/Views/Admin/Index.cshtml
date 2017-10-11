@@ -1,0 +1,32 @@
+﻿<div class="page">
+
+    @{
+        ViewBag.Title = "Управление";
+        ViewBag.Message = "Выбери категорию";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <h4><i>@ViewBag.Message</i></h4>
+    </hgroup>
+
+<div>
+    <table style="margin:auto;table-layout:fixed;width:60%;">
+    <tr>
+        <td align="center"><img src="~/Images/genres.png" /></td>
+        <td align="center"><img src="~/Images/book.png" /></td>
+        <td align="center"><img src="~/Images/users.png" /></td>
+        <td align="center"><img src="~/Images/news.png" /></td>
+    </tr>
+    <tr>
+            <td align="center">@Html.ActionLink("Управление жанрами", "ManageGenres", "Admin")</td>
+            <td align="center">@Html.ActionLink("Управление книгами", "ManageBooks", "Admin")</td>
+            <td align="center">@Html.ActionLink("Управление пользователями", "ManageUsers", "Admin")</td>
+            <td align="center">@Html.ActionLink("Управление новостями","ManageNews","Admin")</td>
+    </tr>
+    </table>
+
+   
+    
+    </div>
+</div>

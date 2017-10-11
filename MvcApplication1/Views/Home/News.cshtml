@@ -1,0 +1,24 @@
+﻿<div class="page">
+    @{
+        ViewBag.Title = "Новости";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+    </hgroup>
+
+    <article>
+        @foreach (var n in ViewBag.News) { 
+        <div>
+            <hr />
+            <i>@n.Added</i>
+            <h2><b>@n.Title</b></h2>
+            <p>@n.Text</p>
+            <hr />
+        </div>
+        }
+
+
+    </article>
+
+</div>

@@ -1,0 +1,44 @@
+﻿<div class="page">
+    @model MvcApplication1.Models.News
+
+    @{
+        ViewBag.Title = "Редактировать жанр";
+
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+
+    </hgroup>
+
+  
+       @using (Html.BeginForm())
+        {
+            
+                @Html.HiddenFor(model => model.Id)
+
+                <p>
+                    Заголовок новости:
+                    @Html.EditorFor(model => model.Title)
+                </p>
+
+                <p>
+                    Текст новости:
+                    @Html.TextAreaFor(model => model.Text)
+                </p>
+
+                    @Html.HiddenFor(model=>model.Added)
+                <br/>
+                   <p><input type="submit" value="Сохранить" /></p>
+           
+        }
+
+    <br />
+    <br />
+    <br />
+    <a href="/Admin/ManageNews">Вернуться к новостям</a>
+   
+
+
+
+</div>

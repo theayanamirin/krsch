@@ -1,0 +1,68 @@
+﻿<div class="page">
+
+
+    @{
+        ViewBag.Title = "Управление новостями";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <p align="left"><a href="/Admin/Index">Вернуться к управлению</a></p>
+    </hgroup>
+
+    <table border="1" style="word-wrap: break-word;width:100%;border-collapse:collapse;border:1px solid #591E23;color:#000000;" cellpadding="3" cellspacing="2">
+        <tr style="background-color:#bc8572;color:white;">
+        
+            <th align="center">
+                Добавлено
+            </th>
+            <th align="center">
+                Заголовок
+            </th>
+            <th align="center">
+                Текст
+            </th>
+            <th colspan="2" align="center">Действие</th>
+        </tr>
+        @foreach (var c in ViewBag.AllNews)
+        {
+            <tr>
+                <td>@c.Added</td>
+                <td>@c.Title</td>
+                <td>@c.Text</td>
+                <td><a href="/Admin/EditNews/@c.Id">Редактировать новость</a></td>
+                <td><a href="/Admin/DeleteNews/@c.Id">Удалить новость</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
+
+
+    <h3>Добавление новых новостей:</h3>
+
+
+    <form id="regform" action='@Url.Action("ManageNews")' method="post">
+
+        <div class="mainform">
+
+            <div class="field">
+                <label for="newstitle">Заголовок:</label><input type="text" name="NewsTitle" id="newstitle" required />
+            </div>
+
+            <div class="field">
+                <label for="newstext">О себе:</label><br />
+                <textarea id="newstext" name="NewsText" required></textarea>
+            </div>
+
+
+            <button type="submit">
+                <img src="~/Images/buttonsubmit.png" alt="" />
+            </button>
+           
+            <input type="reset" />
+
+        </div>
+
+    </form>
+</div>

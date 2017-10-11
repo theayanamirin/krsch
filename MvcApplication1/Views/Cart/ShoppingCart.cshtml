@@ -1,0 +1,58 @@
+﻿<div class="page">
+
+    @{ 
+        ViewBag.Title = "Корзина";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+    </hgroup>
+
+
+
+    @if (ViewBag.CartId == 0) {
+        <h2 align="center">Корзина пуста</h2>
+    }
+    else
+    {
+
+        <table align="center" border="1" style="margin: auto;word-wrap: break-word;width:60%;border-collapse:collapse;border:1px solid #591E23;color:#000000;" cellpadding="3" cellspacing="2">
+            <tr style="background-color:#bc8572; color:white;">
+                <td align="center"><b>Книга</b></td>
+                <td align="center"> <b> Количество </b> </td>
+                <td align="center"><b>Цена</b></td>
+                <td align="center"><b>Удалить?</b></td>
+            </tr>
+
+            @foreach (var c in (List<MvcApplication1.Controllers.CartController.CartInfo>)ViewBag.Carts)
+            {
+                <tr>
+                    <td>@c.BookAuthor "@c.BookTitle"</td>
+                    <td align="center">
+                     @if(c.Quantity>1){
+                         <a href="/Cart/EditQuantityMinus/@c.ItemId"><img src="~/Images/minuscircle.png" /></a> }
+                      @c.Quantity <a href="/Cart/EditQuantityPlus/@c.ItemId"><img src="~/Images/pluscircle.png" /></a></td>
+                    <td>@c.BookPrice.00</td>
+                    <td><a href="/Cart/RemoveFromCart/@c.ItemId">Удалить из корзины</a></td>
+                </tr>
+            }
+            <tr style="background-color:#bc8572;">
+                <td></td>
+                <td></td>
+                <td style="color:white;" align="center"><b>@ViewBag.Total.00</b></td>
+                <td></td>
+            </tr>
+
+            </table>
+
+            <br />
+            <br />
+            <div style="overflow:hidden">
+                <div style="float:left"><a href="@Url.Action("Genres", "Catalog")"> Продолжить покупку</a></div>
+                <div style="float:right"><a href="@Url.Action("Checkout", "Cart", new { id = ViewBag.CartId })">Перейти к оформлению заказа </a></div>
+            </div>
+            
+            
+    }
+
+</div>

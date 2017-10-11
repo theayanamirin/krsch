@@ -1,0 +1,51 @@
+﻿<div class="page">
+    @{
+        ViewBag.Title = "Мои заказы";
+        ViewBag.Message = "Здесь отображены все ваши заказы";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <h4><i>@ViewBag.Message</i></h4>
+    </hgroup>
+
+    @if (ViewBag.MyOrders == null)
+    {
+        <h2 align="center">Вы еще не совершали заказов в нашем магазине.</h2>
+    }
+    else { 
+    <table align="center" border="1" style="margin: auto;word-wrap: break-word;width:80%;border-collapse:collapse;border:1px solid #591E23;color:#000000;" cellpadding="3" cellspacing="2">
+        <tr style="background-color:#bc8572; color:white;">
+            <td align="center"><b>Номер заказа</b></td>
+            <td align="center"> <b>Дата регистрации заказа </b> </td>
+            <td align="center"><b>Детали заказа</b></td>
+            <td align="center"><b>Статус</b></td>
+            <td align="center"><b>Дата отправления</b></td>
+        </tr>
+
+        @foreach (var item in ViewBag.MyOrders)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Added</td>
+                <td><a href="/Home/OrderDetails/@item.Id">Детали заказа</a></td>
+                @if (item.Sent == true)
+                {
+                    <td align="center">Отправлен</td>
+                    <td>@item.DateSent</td>
+                }
+                else
+                {
+                    <td style="color:red;" align="center">Ожидает отправления</td>
+                    <td style="color:red;" align="center">TBA</td>
+
+
+                }
+
+            </tr>
+
+        }
+        
+    </table>
+    }
+</div>

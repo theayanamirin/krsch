@@ -1,0 +1,53 @@
+﻿<div class="page">
+
+    @{
+        ViewBag.Title = "Заказы";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+    </hgroup>
+
+    <table border="1" style="word-wrap: break-word;width:100%;border-collapse:collapse;border:1px solid #591E23;color:#000000;" cellpadding="3" cellspacing="2">
+        <tr style="background-color:#bc8572; color:white; align-items:center;">
+            <td align="center"><b>№</b></td>
+            <td align="center"> <b>User</b> </td>
+            <td align="center"><b>Дата заказа</b></td>
+            <td align="center"><b>ФИО</b></td>
+            <td align="center"><b>Email</b></td>
+            <td align="center"><b>Страна</b></td>
+            <td align="center"><b>Город</b></td>
+            <td align="center"><b>Адрес</b></td>
+            <td align="center"><b>Адрес (всп)</b></td>
+            <td align="center"><b>Телефон</b></td>
+            <td align="center"><b>Обработка</b></td>
+        </tr>
+ 
+            @foreach (var b in ViewBag.AllOrders)
+            {
+                <tr>
+                    <td><a href="/Manager/OrderDetails/@b.Id">@b.Id</a></td>
+                    <td>@b.UserId</td>
+                    <td>@b.Added</td>
+                    <td>@b.FIO</td>
+                    <td>@b.Email</td>
+                    <td>@b.Country</td>
+                    <td>@b.City</td>
+                    <td>@b.Addr1</td>
+                    <td>@b.Addr2</td>
+                    <td>@b.Phone</td>
+                    <td align="center">
+                    @if (b.Sent == true)
+                    {
+                        <p style="color:red">Заказ отправлен</p>
+                    }
+                    else
+                    {
+                    <a href="/Manager/SendNotification/@b.Id">Отправить заказ</a>
+                    }
+                    </td>
+                </tr>
+            }
+
+        </table>
+</div>

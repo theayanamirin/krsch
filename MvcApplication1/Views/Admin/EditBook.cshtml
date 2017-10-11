@@ -1,0 +1,49 @@
+﻿<div class="page">
+    @model MvcApplication1.Models.Books
+
+    @{
+        ViewBag.Title = "Редактировать жанр";
+
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+
+    </hgroup>
+
+
+    @using (Html.BeginForm())
+    {
+
+        @Html.HiddenFor(model => model.Id)
+
+        <p>
+            Имя автора:
+            @Html.EditorFor(model => model.Author)
+        </p>
+
+        <p>
+            Название книги:
+            @Html.EditorFor(model => model.Title)
+
+        </p>
+        <p>
+            Цена книги:
+            @Html.EditorFor(model => model.Price)
+        </p>
+        <p>
+            Описание книги
+            @Html.TextAreaFor(model => model.Description)
+        </p>
+
+        @Html.HiddenFor(model => model.GenreId)
+        <br />
+        <p><input type="submit" value="Сохранить" /></p>
+
+    }
+
+    <br />
+    <br />
+    <br />
+    <a href="/Admin/ManageBooks">Вернуться к книгам</a>
+</div>

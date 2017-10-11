@@ -1,0 +1,36 @@
+﻿<div class="page">
+    @model MvcApplication1.Models.Genres
+
+    @{
+        ViewBag.Title = "Редактировать жанр";
+        
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        
+    </hgroup>
+
+   
+
+    @using (Html.BeginForm())
+    {
+       
+           
+            @Html.HiddenFor(model => model.GenreId)
+
+            <p>
+                Название жанра:
+                @Html.EditorFor(model => model.GenreTitle)
+            </p>
+                      <br />
+            <p><input type="submit" value="Сохранить" /></p>
+           
+            
+    }
+    <br />
+    <br />
+    <br />
+    <a href="/Admin/ManageGenres">Вернуться к жанрам</a>
+
+</div>

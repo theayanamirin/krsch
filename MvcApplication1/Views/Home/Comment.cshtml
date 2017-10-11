@@ -1,0 +1,76 @@
+﻿<div class="page">
+    @model MvcApplication1.Models.Comment
+
+    @{
+        ViewBag.Title = "Отзывы";
+        ViewBag.Message = "А здесь вы можете почитать отзывы, оставленные на наш сайт или добавить свой!";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <h4><i>@ViewBag.Message</i></h4>
+    </hgroup>
+
+    @foreach (var c in ViewBag.Comments)
+    {
+        if ((WebSecurity.CurrentUserName == "Admin") || (Roles.IsUserInRole("Manager")) || !c.Hidden)
+        {
+            <hr />
+               <table><tr><td><i>@c.CommentDate</i></td><td></td><td><td><i>@c.UserProfile.UserName</i></td></tr></table>
+               
+               <p>@c.CommentText</p>
+               
+                if ((WebSecurity.CurrentUserName == "Admin")||(Roles.IsUserInRole("Manager")))
+                {
+                    if (c.Hidden)
+                    {
+                        <p align="right">
+                            @Html.ActionLink("Показать", "EditComment", "Home",
+                            new { ticks = c.CommentDate.Ticks }, null)
+                        </p>
+                    }
+                    else
+                    {
+                        <p align="right">
+                            @Html.ActionLink("Скрыть", "EditComment", "Home",
+                            new { ticks = c.CommentDate.Ticks }, null)
+                        </p>
+
+                }
+
+            }
+            if (WebSecurity.CurrentUserName == "Admin"){ 
+            <p align="right"><a href="/Home/DeleteComment/@c.Id">Удалить</a></p>
+            }
+            <hr />
+
+        }
+    }
+    
+    @if (Request.IsAuthenticated) { 
+    <br/>
+    <br/>
+    <br/>
+        <b>Ввод отзыва:</b>
+        <br />
+        <form id="commentform" action='' method="post">
+
+            <div class="mainform">
+
+                <div class="field">
+                    <label for="feedback">Текст отзыва:</label><br />
+                    <textarea id="feedback" name="Comment"></textarea>
+                </div>
+
+                <button type="submit">
+                    <img src="~/Images/buttonsubmit.png" alt="" />
+                </button>
+
+                <button type="reset" onclick="location.href='@Url.Action("Comment")';">
+                    <img src="~/Images/buttonCANC.png" alt="" />
+                </button>
+
+            </div>
+        </form>
+    }
+</div>

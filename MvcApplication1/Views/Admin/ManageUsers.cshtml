@@ -1,0 +1,61 @@
+﻿<div class="page">
+
+    @{
+        ViewBag.Title = "Управление пользователями";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <p align="left"><a href="/Admin/Index">Вернуться к управлению</a></p>
+    </hgroup>
+
+
+    <table border="1" style="margin:auto;word-wrap: break-word;width:60%;border-collapse:collapse;border:1px solid #591E23;color:#000000;" cellpadding="3" cellspacing="2">
+        <tr style="background-color:#bc8572;color:white;">
+            <th align="center">
+                ID
+            </th>
+            <th align="center">
+                Логин
+            </th>
+            <th align="center">
+                Роль
+            </th>
+            <th align="center">
+                Действие
+            </th>
+
+
+        </tr>
+        @foreach (var c in (List<MvcApplication1.Controllers.AdminController.CustomerInfo>)ViewBag.Clients)
+        {
+            <tr>
+                <td>@c.UserId</td>
+                <td>@c.UserName</td>
+
+                @if (c.RoleId == 3)
+                {
+                    <td>Клиент</td>
+                }
+                else
+                {
+                <td>Менеджер</td> }
+
+
+                @if (WebSecurity.CurrentUserName == "Admin")
+                {
+                    if (c.RoleId == 3)
+                    {
+                        <td><a href="/Admin/SetRole/@c.UserId">Назначить модератором</a></td>
+                    }
+                    else
+                    {
+                        <td><a href="/Admin/DelManagerRole/@c.UserId">Удалить модератора</a></td>
+                    }
+
+                }
+            </tr>
+        }
+    </table>
+
+</div>

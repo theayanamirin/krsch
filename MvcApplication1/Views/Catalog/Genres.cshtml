@@ -1,0 +1,23 @@
+﻿<div class="page">
+    @using MvcApplication1.Models
+
+    @{
+        ViewBag.Title = "Жанры";
+    }
+    <h2>@ViewBag.Title</h2>
+
+
+    @using (var db = new UsersContext())
+    {
+        <ul>
+            @foreach (var gen in db.Genres)
+            {
+
+                // <a href="@Url.Action("GenresView","Catalog", new {id = gen.GenreId})">@gen.GenreTitle</a>
+                <li><b><a href="@Url.Action("Books","Catalog",new {id = gen.GenreId})">@gen.GenreTitle</a></b></li>
+            }
+        </ul>
+
+    }
+
+</div>

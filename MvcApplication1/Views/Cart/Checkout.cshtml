@@ -1,0 +1,52 @@
+﻿<div class="page">
+    @{
+        ViewBag.Title = "Оформление заказа";
+        ViewBag.Message = "Пожалуйста, заполните форму!";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <h4><i>@ViewBag.Message</i></h4>
+    </hgroup>
+
+    <form id="regform" action='@Url.Action("Thanks","Cart",new { id = ViewBag.Cart })' method="post">
+
+        <div class="mainform">
+
+            <div class="field">
+                <label for="idFIO">ФИО:</label><input type="text" name="FIO" id="idFIO" />
+            </div>
+
+            <div class="field">
+                <label for="email">Электронная почта:</label><input type="text" name="Email" id="email" />
+            </div>
+
+            <div class="field">
+                <label for="country">Страна:</label><input type="text" name="Country" id="country" />
+            </div>
+
+            <div class="field">
+                <label for="city">Город:</label><input type="text" name="City" id="city" />
+            </div>
+
+            <div class="field">
+                <label for="adline1">Линия адреса 1:</label><input type="text" name="Addr1" id="adline1" />
+            </div>
+            <div class="field">
+                <label for="adline2">Линия адреса 2:</label><input type="text" name="Addr2" id="adline2" />
+            </div>
+
+            <div class="field">
+                <label for="phonenum">Телефон:</label><input type="text" name="Phone" id="phonenum" />
+            </div>
+
+            <br/>
+            <button type="submit">
+                <img src="~/Images/buttonsubmit.png" alt="" />
+            </button>
+            <button type="button" onclick="location.href='/Cart/ShoppingCart';"><img src="~/Images/buttonCANC.png" alt="" /></button>
+            <input type="reset" value="Сброс формы" />
+
+        </div>
+    </form>
+</div>

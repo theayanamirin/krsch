@@ -1,0 +1,20 @@
+﻿<div class="page">
+    @{
+        ViewBag.Title = "Спасибо!";
+        ViewBag.Message = "Ваш заказ отправлен на обработку. Спасибо за совершенный заказ в нашем магазине";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <h3>@ViewBag.Message</h3>
+    </hgroup>
+
+    Состояние вашего заказа вы можете посмотреть в разделе @Html.ActionLink("Мои заказы","MyOrders","Home")
+
+
+    <br/>
+    <br />
+    <br />
+    <a href="/Home/Index">На главную</a>
+
+</div>

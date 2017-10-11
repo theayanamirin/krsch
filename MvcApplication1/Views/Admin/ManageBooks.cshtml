@@ -1,0 +1,98 @@
+﻿<div class="page">
+    @model MvcApplication1.Models.Books
+
+    @{
+        ViewBag.Title = "Управление книгами";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <p align="left"><a href="/Admin/Index">Вернуться к управлению</a></p>
+    </hgroup>
+    
+
+    <table border="1" style="word-wrap: break-word;width:100%;border-collapse:collapse;border:1px solid #591E23;color:#000000;" cellpadding="3" cellspacing="2">
+        <tr style="background-color:#bc8572;color:white;">
+            <th align="center">
+                Название
+            </th>
+            <th align="center">
+                Автор
+            </th>
+            <th align="center">
+                Жанр
+            </th>
+            <th align="center">
+                Цена
+            </th>
+
+            <th align="center">Описание</th>
+            <th colspan="2" align="center">Действия</th>
+        </tr>
+        @foreach (var c in ViewBag.AllBooks)
+        {
+            <tr>
+                <td>@c.Title</td>
+                <td>@c.Author</td>
+                <td>@c.Genre.GenreTitle</td>
+                <td>@c.Price.00</td>
+                <td>@c.Description</td>
+                <td><a href="/Admin/ToEditBook/@c.Id">Редактировать</a></td>
+                <td><a href="/Admin/DeleteBook/@c.Id">Удалить</a></td>
+            </tr>
+        }
+    </table>
+    <br />
+   <h3>Добавление новых книг:</h3>
+    <form id="regform" action='@Url.Action("ManageBooks")' method="post">
+
+        <div class="mainform">
+
+            <div class="field">
+                <label for="booktitle">Название:</label><input type="text" name="Title" id="booktitle" required />
+            </div>
+
+            <div class="field">
+                <label for="bookauthor">Автор:</label> <input type="text" name="Author" id="bookauthor" required />
+            </div>
+
+            <div class="field">
+                <label for="bookprice">Цена:</label><input type="text" name="Price" id="bookprice" required />
+            </div>
+
+            <div class="field">
+                <label for="descbox">Описание:</label><br/><textarea name="Description" id="descbox" required></textarea>
+            </div>
+           
+
+            <div class="field">
+                <label for="genres">Жанры:</label><br />
+                <select name="Genres" size="5" id="genres" style="width:200px;">
+                    @foreach (var item in ViewBag.AllGenres) { 
+                    <option value=@item.GenreId>@item.GenreTitle</option>
+                    }
+                    
+
+                </select>
+            </div>
+
+
+            <button type="submit">
+                <img src="~/Images/buttonsubmit.png" alt="" />
+            </button>
+           
+            <input type="reset" />
+
+        </div>
+
+    </form>
+    <br />
+    <br />
+    <br />
+   
+
+
+
+
+
+</div>

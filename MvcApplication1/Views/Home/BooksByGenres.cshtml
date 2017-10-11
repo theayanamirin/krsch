@@ -1,0 +1,23 @@
+﻿<div class="page">
+    @{
+        ViewBag.Title = "BooksByGenres";
+    }
+
+    <h1>BooksByGenres</h1>
+
+    @foreach (var c in ViewBag.BookCatalog)
+    {
+        <div>
+            <hr />
+            <h2><b>@c.Title</b></h2>
+            <i>@c.Author</i>
+            <br />
+            <br />
+            <p>@c.Description</p>
+            <p align="right"><b>@c.Price.00</b></p>
+            <p align="right"><a href="">Добавить в корзину</a></p>
+            <hr />
+        </div>
+    }
+
+</div>

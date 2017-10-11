@@ -1,0 +1,71 @@
+﻿@model MvcApplication1.Models.Clients
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Clients</legend>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Added)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Added)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.FirstName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.FirstName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.LastName)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LastName)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Sex)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Sex)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Birthday)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Birthday)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Genres)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Genres)
+    </div>
+
+    <div class="display-label">
+        @Html.DisplayNameFor(model => model.Preference)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Preference)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

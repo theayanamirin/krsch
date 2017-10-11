@@ -1,0 +1,32 @@
+﻿<div class="page">
+    @model IEnumerable<MvcApplication1.Models.Books>
+    @using MvcApplication1.Models
+   
+    <hgroup class="title">
+        @foreach (var b in ViewBag.GenreTitle)
+        {
+            <h1>@b.GenreTitle</h1>
+            <h4><i>Книги по жанру:</i></h4>
+            <p><a href="/Catalog/Genres">Обратно к жанрам</a></p>
+        }
+    </hgroup>
+
+   
+    @foreach (var item in Model)
+    {<hr />
+                    <h3>@item.Title</h3>
+                    <p><i>@item.Author</i></p>
+                    <br />
+                    <p align="justify">    @item.Description</p>
+                    if (Request.IsAuthenticated)
+                    {
+                        if (Roles.IsUserInRole("Client"))
+                        {
+                          <p align="right"><a href="@Url.Action("AddToCart", "Cart", new { id = item.Id })">Добавить в корзину</a></p>
+            }
+
+        }
+        <hr />
+    }
+            
+</div>

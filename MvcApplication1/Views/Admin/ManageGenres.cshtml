@@ -1,0 +1,64 @@
+﻿<div class="page">
+    @model MvcApplication1.Models.Books
+
+    @{
+        ViewBag.Title = "Управление жанрами";
+        
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title</h1>
+        <p align="left"><a href="/Admin/Index">Вернуться к управлению</a></p>
+    </hgroup>
+
+
+    <table align="center" border="1" style="margin: auto;word-wrap: break-word;width:80%;border-collapse:collapse;border:1px solid #591E23;color:#000000;" cellpadding="3" cellspacing="2">
+        <tr style="background-color:#bc8572;color:white;">
+            <th colspan="3">
+                Жанр
+            </th>
+
+        </tr>
+        @foreach (var c in ViewBag.AllGenres)
+        {
+            <tr>
+                <td align="center">@c.GenreTitle</td>
+                <td align="center"><a href="/Admin/EditGenre/@c.GenreId">Редактировать</a></td>
+                <td align="center"><a href="/Admin/DeleteGenre/@c.GenreId">Удалить</a></td>
+            </tr>
+        }
+    </table>
+    
+    <div>
+        <br />
+        <h3>Добавить новые жанры:</h3>
+        <br />
+        <form id="regform" action='@Url.Action("ManageGenres")' method="post">
+
+            <div class="mainform">
+
+                <div class="field">
+                    <label for="genretitle">Название:</label><input type="text" name="Genre" id="genretitle" required />
+                </div>
+
+                <br />
+                <button type="submit">
+                    <img src="~/Images/buttonsubmit.png" alt="" />
+                </button>
+
+                <input type="reset" />
+
+            </div>
+
+        </form>
+    </div>
+    <br />
+    <br />
+    <br />
+    
+   
+
+
+
+
+</div>

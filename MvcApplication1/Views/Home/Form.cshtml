@@ -1,0 +1,127 @@
+﻿<div class="page">
+    @model MvcApplication1.Models.Clients
+
+    @{
+        ViewBag.Title = "Анкета пользователя";
+    }
+
+    <hgroup class="title">
+        <h1>@ViewBag.Title.</h1>
+        <h2>@ViewBag.Message</h2>
+    </hgroup>
+
+    @if (@ViewBag.ClientForm == null)
+    {
+        <form id="regform" action='@Url.Action("Form")' method="get">
+
+            <div class="mainform">
+
+                <div class="field">
+                    <label for="name">Имя:</label><input type="text" name="Firstname" id="name" />
+                </div>
+
+                <div class="field">
+                    <label for="surname">Фамилия:</label> <input type="text" name="Lastname" id="surname" />
+                </div>
+
+                <div class="field">
+                    <label for="email">Электронная почта:</label><input type="text" name="Email" id="email" />
+                </div>
+
+                <div class="field"> <label for="bd">День рождения:</label><input type="text" name="Bthd" id="bd" /></div>
+
+                <div class="field">
+                    <label>Пол:</label>
+                    <input type="radio" name="Sex" value="Мужской" id="male" checked /><label for="male">М</label>
+                    <input type="radio" name="Sex" value="Женский" id="female" /><label for="female">Ж</label>
+                </div>
+
+                <div class="field">
+                    <label for="genres">Любимые книжные жанры:</label><br />
+                    <select multiple="multiple" name="Genres" size="5" id="genres">
+                        <option value="YA">YA</option>
+                        <option value="Детектив">Детектив</option>
+                        <option value="Ужасы">Ужасы</option>
+                        <option value="Триллер">Триллер</option>
+                        <option value="Классика">Классика</option>
+                        <option value="Фантастика">Фантастика</option>
+                        <option value="Фэнтези">Фэнтези</option>
+                        <option value="Исторический роман">Исторический роман</option>
+                        <option value="Романтика">Романтика</option>
+                        <option value="Проза">Проза</option>
+
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="myself">О себе:</label><br />
+                    <textarea id="myself" name="talk"></textarea>
+                </div>
+
+                <div class="fieldcheck">
+                    <label>Что должно быть в книге, чтобы она вам понравилась?</label><br />
+                    <label><input type="checkbox" name="Books" value="Герои" />Интересные герои</label>
+                    <label><input type="checkbox" name="Books" value="Сюжет" />Захватывающий сюжет</label><br />
+                    <label><input type="checkbox" name="Books" value="Твист" />Неожиданные повороты сюжета</label>
+                    <label><input type="checkbox" name="Books" value="Язык" />Легкий язык автора</label><br />
+                    <label><input type="checkbox" name="Books" value="Мир" />Хорошо прописанный мир</label>
+                    <label><input type="checkbox" name="Books" value="Другое" required />Что-либо другое</label>
+
+                </div>
+
+                <button type="submit">
+                    <img src="~/Images/buttonsubmit.png" alt="" />
+                </button>
+                <button type="reset" onclick="location.href='@Url.Action("Index")';">
+                    <img src="~/Images/buttonCANC.png" alt="" />
+                </button>
+
+                <input type="reset" />
+
+            </div>
+            <script src="~/Scripts/formvalidate.js" type="text/javascript"></script>
+            @Scripts.Render("~/bundles/jqueryval")
+            @Scripts.Render("~/bundles/jqueryvaladd")
+        </form>
+    }
+    else
+    {
+        foreach (var c in ViewBag.ClientForm) { 
+        <table border="1" style="table-layout:fixed;word-wrap: break-word;width:70%;background-color:#FFFFCC;border-collapse:collapse;border:1px solid #FFCC00;color:#000000;" cellpadding="3" cellspacing="2">
+            <tr>
+                <td>Имя</td>
+                <td>@c.FirstName</td>
+            </tr>
+            <tr>
+                <td>Фамилия</td>
+                <td>@c.LastName</td>
+            </tr>
+            <tr>
+                <td>Пол</td>
+                <td>@c.Sex</td>
+            </tr>
+            <tr>
+                <td>Дата рождения</td>
+                <td>@c.Birthday</td>
+            </tr>
+            <tr>
+                <td>Любимые жанры</td>
+                <td>@c.Genres</td>
+            </tr>
+            <tr>
+                <td>Электронная почта</td>
+                <td>@c.Email</td>
+            </tr>
+          <!-- <tr>
+                <td>Информация о себе</td>
+                <td>ViewBag.Client.Talk</td>
+            </tr>--> 
+            <tr>
+                <td>Любимое в книгах</td>
+                <td>@c.Preference</td>
+            </tr>
+        </table>
+        }
+    }
+
+</div>
